@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Loan</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Admin Dashboard</a>
+            <ul class="nav-menu">
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Applications</a></li>
+                <li><a href="#">Rejected List</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div id="viewClients" class="content-section">
+            <h2>Clients Overview</h2>
+            <table id="clientsTable">
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>C001</td>
+                        <td>Ram</td>
+                        <td>ram@example.com</td>
+                        <td>8876251093</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr class="inactive">
+                        <td>C002</td>
+                        <td>Shyam</td>
+                        <td>Shyam@example.com</td>
+                        <td>7495624396</td>
+                        <td>Inactive</td>
+                    </tr>
+                    <tr>
+                        <td>C003</td>
+                        <td>Gopal</td>
+                        <td>gopal@example.com</td>
+                        <td>9751053017</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr class="pending">
+                        <td>C004</td>
+                        <td>Riya</td>
+                        <td>riya@example.com</td>
+                        <td>8532091572</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>C005</td>
+                        <td>Siya</td>
+                        <td>siya@example.com</td>
+                        <td>9871539215</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>C006</td>
+                        <td>Miya</td>
+                        <td>miya@example.com</td>
+                        <td>9982437611</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>C007</td>
+                        <td>Liya</td>
+                        <td>liya@example.com</td>
+                        <td>9876543219</td>
+                        <td>Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <script src="adminDashboard.js"></script> -->
+</body>
+</html>
