@@ -80,17 +80,26 @@ body {
     border-collapse: collapse;
     margin-top: 20px;
 }
-.content-section th, .content-section td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-.content-section th {
-    background-color: #F2F2F2;
-}
-.inactive {
-    background-color: rgb(239, 173, 173);
-}
-.pending {
-    background-color: rgb(237, 234, 147);
-}
+table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+table, th, td {
+            border: 1px solid black;
+        }
+ th, td {
+            padding: 10px;
+            text-align: left;
+        }
+button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
