@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'http://localhost:8085/VLC/resources/LoanService/customers/'; // Replace with your API URL
+	const signOutButton = document.getElementById('sign-out-button');
+	    	   
+	signOutButton.addEventListener('click', () => {
+	 // Display a confirmation dialog
+	 const userConfirmed = confirm('Are you sure you want to log out?');
+	 if (userConfirmed) {
+	 // Redirect to the login page
+	 window.location.href = 'login.html'; // Replace with the path to your login page
+	 }
+	  });
     async function fetchData() {
         try {
             const response = await fetch(apiUrl);
@@ -35,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             viewDetailsButton.textContent = 'View Details';
             viewDetailsButton.addEventListener('click', () => {
                 // Handle the view details button click
-                alert(`Viewing details for ${item.name}`);
+                alert(Viewing details for ${item.name});
             });
             actionsCell.appendChild(viewDetailsButton);
             row.appendChild(actionsCell);
