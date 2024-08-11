@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Page with Navbar and Login/Signup</title>
+    <link rel="stylesheet" href="applyloan.css" />
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <style>
+      /* body {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        } */
+      .main-container {
+        display: flex;
+      }
+      .right-carousel {
+            position: relative;
+            margin: auto;
+            max-width: 900px;
+            height: 500px; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF; 
+        }
+        .right-carousel img {
+            
+            max-height: 80%; 
+            display: none;
+            object-fit: contain; 
+        }
+        .right-carousel img.active {
+            display: block;
+        }
+      .left-carousel {
+            width: 350px;
+            padding: 20px;
+            margin: auto;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        .left-carousel p {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .left-carousel p:before {
+            content: "★ ";
+            color: #FFA500;
+            font-weight: bold;
+        }
+        .left-carousel p:before {
+            display: none;
+        }
+        .left-carousel p:first-of-type:before {
+            display: inline;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">VLC</a>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#aboutus">About us</a></li>
+          <li><a href="#emicalc">Emi Calculator</a></li>
+          <li><a href="#applyLoan" id="applyLoanLink">Apply Loan</a></li>
+          <li><a href="#" id="signout">Signout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-container">
+      <div class="left-carousel">
+        <p>
+          🚗 Exciting New Loan Plans for 2024! We're thrilled to announce our
+          new vehicle loan plans tailored to fit your needs. Enjoy lower
+          interest rates and flexible repayment options. Check out the details
+          and find the perfect plan for you today!
+        </p>
+        <p>
+          📈 Market Trends: What You Need to Know** Stay informed with our
+          latest update on vehicle loan market trends. Learn about current
+          interest rates, market forecasts, and how these factors could impact
+          your loan.
+        </p>
+        <p>
+          🎉 Summer Special: Reduced Rates on All Loans!** Take advantage of our
+          limited-time summer special with reduced rates on all vehicle loans.
+          Apply before August 31st to lock in these savings and get the best
+          deal on your next vehicle!
+        </p>
+      </div>
+      <div class="right-carousel">
+        <img src="static/image1.jpeg" class="active" alt="Image 1" />
+        <img src="static/image2.jpeg" alt="Image 2" />
+        <img src="static/image3.jpeg" alt="Image 3" />
+        <img src="static/image4.jpeg" alt="Image 4" />
+      </div>
+    </div>
+    <script>
+      let currentIndex = 0;
+      const images = document.querySelectorAll(".right-carousel img");
+      const totalImages = images.length;
+      function showNextImage() {
+        images[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % totalImages;
+        images[currentIndex].classList.add("active");
+      }
+      setInterval(showNextImage, 2000);
+      document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('navbar');
+
+    document.getElementById('applyLoanLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        window.location.href = 'applyloan.html'; 
+    });
+});
+
+    </script>
+    <!-- <script src="index.js"></script> -->
+  </body>
+</html>

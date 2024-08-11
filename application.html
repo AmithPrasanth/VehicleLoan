@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Loan</title>
+    <link rel="stylesheet" href="adminDashboard.css" />
+    <link rel="icon" href="static/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">Admin Dashboard</a>
+        <ul class="nav-menu">
+          <li><a href="#">Clients</a></li>
+          <li><a href="application.html" id="application">Applications</a></li>
+          <li><a href="#">Rejected List</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-content">
+      <div id="viewClients" class="content-section">
+        <h2>Pending Applications</h2>
+        <table id="pendingApplicationTable">
+          <thead>
+            <tr>
+              <th>Client ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>C001</td>
+              <td>Ram</td>
+              <td>ram@example.com</td>
+              <td><button> View Application</button></td>
+            </tr>
+            <tr>
+              <td>C002</td>
+              <td>Shyam</td>
+              <td>Shyam@example.com</td>
+              <td><button>View Application</button></td>
+            </tr>         
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </body>
+</html>
