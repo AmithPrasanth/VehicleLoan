@@ -21,7 +21,7 @@ public class VehicleDaoImpl implements VehicleDao {
 			System.out.println("Driver registerd....");
 			
 			System.out.println("Trying to connect to the DB");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "amith2002");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "password");
 			System.out.println("Connected to the DB : "+conn);
 			
 		}
@@ -105,7 +105,7 @@ public class VehicleDaoImpl implements VehicleDao {
 		try {
 			PreparedStatement pst = conn.prepareStatement("update vehicle set make=?,model=?,ex_showroom_price=?,on_road_price=? where vehicle_id=?");
 			
-			pst.setInt(6,vehObj.getVehicle_id()); //WHERE
+			pst.setInt(5,vehObj.getVehicle_id()); //WHERE
 			pst.setString(1, vehObj.getMake()); 
 			pst.setString(2, vehObj.getModel()); 
 			pst.setInt(3, vehObj.getEx_showroom_price());
@@ -124,7 +124,7 @@ public class VehicleDaoImpl implements VehicleDao {
 	public void deleteVehicle(int vehicle_id) {
 		
 		try {
-			PreparedStatement pst = conn.prepareStatement("delete from credentials where vehicle_id=?");
+			PreparedStatement pst = conn.prepareStatement("delete from vehicle where vehicle_id=?");
 			
 			pst.setInt(1,vehicle_id); //WHERE
 			

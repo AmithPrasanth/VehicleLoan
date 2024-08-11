@@ -22,7 +22,7 @@ public class LoanDaoImpl implements LoanDao {
 			System.out.println("Driver registerd....");
 			
 			System.out.println("Trying to connect to the DB");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "amith2002");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "password");
 			System.out.println("Connected to the DB : "+conn);
 			
 		}

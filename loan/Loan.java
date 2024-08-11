@@ -67,7 +67,13 @@ public class Loan {
 		public void setTenure(int tenure) {
 			this.tenure = tenure;
 		}
-	    
+	    @Override
+		public String toString() {
+			return "Loan [loan_id=" + loan_id + ", loan_number=" + loan_number + ", amount=" + amount + ", customer_id="
+					+ customer_id + ", rate_of_interest=" + rate_of_interest + ", tenure=" + tenure
+					+ ", total_amount_to_pay=" + total_amount_to_pay + ", amount_left_to_pay=" + amount_left_to_pay
+					+ ", date_of_loan=" + date_of_loan + "]";
+		}
 	    
 
 }
