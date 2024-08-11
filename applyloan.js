@@ -151,36 +151,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Gather form data
         const formData = new FormData(form);
-        const data = {
+        const customerData = {
             customerName: formData.get('customerName'),
             customerEmail: formData.get('customerEmail'),
             customerPhone: formData.get('customerPhone'),
-            customerAddress: formData.get('customerAddress'),
+            customerAddress: formData.get('customerAddress')
+        };
+
+        const vehicleData = {
             vehicleMake: formData.get('vehicleMake'),
             vehicleModel: formData.get('vehicleModel'),
-            vehiclePrice: formData.get('vehiclePrice'),
+            vehiclePrice: formData.get('vehiclePrice')
+        };
+
+        const loanData = {
             loanAmount: formData.get('loanAmount'),
             loanTerm: formData.get('loanTerm'),
-            loanPurpose: formData.get('loanPurpose'),
-            aadharCard: formData.get('aadharCard'), // Note: You might need to handle file uploads differently
-            panCard: formData.get('panCard')      // Note: You might need to handle file uploads differently
+            loanPurpose: formData.get('loanPurpose')
         };
 
         try {
-            // Replace with your backend API URL
-            const response = await fetch('http://localhost:8085/VLC/resources/LoanService/applications/', {
+            // Send customer details
+            const customerResponse = await fetch('http://localhost:8085/VLC/resources/LoanService/customers/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(customerData),
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            if (!customerResponse.ok) {
+                throw new Error('Failed to save customer details');
             }
 
-            const result = await response.json();
+            // Send vehicle details
+            const vehicleResponse = await fetch('http://localhost:8085/VLC/resources/LoanService/vehicles/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(vehicleData),
+            });
+
+            if (!vehicleResponse.ok) {
+                throw new Error('Failed to save vehicle details');
+            }
+
+            // Send loan details
+            const loanResponse = await fetch('http://localhost:8085/VLC/resources/LoanService/loans/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loanData),
+            });
+
+            if (!loanResponse.ok) {
+                throw new Error('Failed to save loan details');
+            }
+
+            // Handle file uploads if needed
+            const fileData = new FormData();
+            fileData.append('aadharCard', formData.get('aadharCard'));
+            fileData.append('panCard', formData.get('panCard'));
+
+            const fileResponse = await fetch('http://localhost:8085/VLC/resources/LoanService/documents/', {
+                method: 'POST',
+                body: fileData,
+            });
+
+            if (!fileResponse.ok) {
+                throw new Error('Failed to upload documents');
+            }
+
             alert('Application submitted successfully!');
             form.reset(); // Clear the form
             showPage(1); // Go back to the first page
