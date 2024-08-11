@@ -34,23 +34,27 @@ function showPage(pageNumber) {
     const pages = document.querySelectorAll('.form-page');
     pages.forEach(page => page.style.display = 'none');
     document.getElementById('page' + pageNumber).style.display = 'block';
-    updateProgressBar(pageNumber);
+    updateProgressBar();
 }
 
-function updateProgressBar(currentPage) {
-    const totalPages = document.querySelectorAll('.form-page').length;
+function updateProgressBar() {
+    const pages = document.querySelectorAll('.form-page');
+    const totalFields = [];
+    const filledFields = [];
+
+    pages.forEach(page => {
+        const fields = page.querySelectorAll('input[required], select[required], textarea[required]');
+        totalFields.push(...fields);
+        
+        fields.forEach(field => {
+            if (field.value.trim() !== '') {
+                filledFields.push(field);
+            }
+        });
+    });
+
+    const progressPercentage = (filledFields.length / totalFields.length) * 100;
     const progressBar = document.getElementById('progressBar');
-    
-    let progressPercentage = 0;
-
-    // If currentPage is the last page, set progress to 100%
-    if (currentPage === totalPages) {
-        progressPercentage = 100;
-    } else {
-        // Calculate progress as a percentage of pages completed
-        progressPercentage = (currentPage / totalPages) * 100;
-    }
-
     progressBar.style.width = progressPercentage + '%';
     progressBar.textContent = Math.round(progressPercentage) + '% Complete';
 }
@@ -63,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loanApplicationForm');
     
+    form.addEventListener('input', updateProgressBar); // Update progress bar on any input change
     form.addEventListener('submit', (event) => {
         if (!validateForm()) {
             event.preventDefault(); 
