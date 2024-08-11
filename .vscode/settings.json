@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\Vyshnav Anil\\Downloads\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0.jar",
+        "test-lib\\**\\*.jar",
+        "test-lib1\\**\\*.jar"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}
