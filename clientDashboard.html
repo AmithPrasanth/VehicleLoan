@@ -69,8 +69,8 @@
       <div class="navbar-container">
         <a href="#" class="logo">VLC</a>
         <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#aboutus">About us</a></li>
+          <li><a href="#home" id="home">Home</a></li>
+          <li><a href="#aboutus" id="aboutus">About us</a></li>
           <li><a href="#emicalc" id="emicalcLink">Emi Calculator</a></li>
           <li><a href="#applyLoan" id="applyLoanLink">Apply Loan</a></li>
           <li><a href="#" id="signout">Signout</a></li>
@@ -125,6 +125,14 @@
     document.getElementById('emicalcLink').addEventListener('click', function(event) {
         event.preventDefault(); 
         window.location.href = 'emicalculator.html'; 
+    });
+    document.getElementById('home').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'clientDashboard.html';
+    });
+    document.getElementById('aboutus').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'aboutus.html';
     });
 });
 
