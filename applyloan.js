@@ -136,3 +136,75 @@ document.getElementById('aboutus').addEventListener('click', function(event) {
     event.preventDefault(); 
     window.location.href = 'aboutus.html';
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the loan application form
+    const form = document.getElementById('loanApplicationForm');
+
+    // Handle form submission
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Validate the form data
+        if (!validateForm()) {
+            return; // Stop form submission if validation fails
+        }
+
+        // Gather form data
+        const formData = new FormData(form);
+        const data = {
+            customerName: formData.get('customerName'),
+            customerEmail: formData.get('customerEmail'),
+            customerPhone: formData.get('customerPhone'),
+            customerAddress: formData.get('customerAddress'),
+            vehicleMake: formData.get('vehicleMake'),
+            vehicleModel: formData.get('vehicleModel'),
+            vehiclePrice: formData.get('vehiclePrice'),
+            loanAmount: formData.get('loanAmount'),
+            loanTerm: formData.get('loanTerm'),
+            loanPurpose: formData.get('loanPurpose'),
+            aadharCard: formData.get('aadharCard'), // Note: You might need to handle file uploads differently
+            panCard: formData.get('panCard')      // Note: You might need to handle file uploads differently
+        };
+
+        try {
+            // Replace with your backend API URL
+            const response = await fetch('http://localhost:8085/VLC/resources/LoanService/applications/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            alert('Application submitted successfully!');
+            form.reset(); // Clear the form
+            showPage(1); // Go back to the first page
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('There was an error submitting your application. Please try again.');
+        }
+    });
+
+    // Form validation function
+    function validateForm() {
+        const name = document.getElementById('customerName').value;
+        const age = parseInt(document.getElementById('age').value, 10);
+
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(name)) {
+            alert('Name must contain only alphabets.');
+            return false;
+        }
+
+        if (isNaN(age) || age <= 18) {
+            alert('Age must be greater than 18.');
+            return false;
+        }
+        return true;
+    }
+});
