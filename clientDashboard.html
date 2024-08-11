@@ -71,7 +71,7 @@
         <ul class="nav-menu">
           <li><a href="#home">Home</a></li>
           <li><a href="#aboutus">About us</a></li>
-          <li><a href="#emicalc">Emi Calculator</a></li>
+          <li><a href="#emicalc" id="emicalcLink">Emi Calculator</a></li>
           <li><a href="#applyLoan" id="applyLoanLink">Apply Loan</a></li>
           <li><a href="#" id="signout">Signout</a></li>
         </ul>
@@ -121,6 +121,10 @@
     document.getElementById('applyLoanLink').addEventListener('click', function(event) {
         event.preventDefault(); 
         window.location.href = 'applyloan.html'; 
+    });
+    document.getElementById('emicalcLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        window.location.href = 'emicalculator.html'; 
     });
 });
 

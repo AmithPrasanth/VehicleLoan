@@ -120,3 +120,15 @@ function checkEligibility() {
 
 // Bind the eligibility check function to the button click
 document.querySelector('#checkEligibilityButton').addEventListener('click', checkEligibility);
+document.getElementById('emicalcLink').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'emicalculator.html'; 
+});
+document.getElementById('applyLoanLink').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'applyloan.html'; 
+});
+document.getElementById('home').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'clientDashboard.html'; 
+});
