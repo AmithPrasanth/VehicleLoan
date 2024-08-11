@@ -251,3 +251,37 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 });
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    displayCustomerId();
+});
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function displayCustomerId() {
+    const customerId = getCookie('customerId');
+    const customerIdDisplay = document.getElementById('customerIdDisplay');
+    if (customerId) {
+        customerIdDisplay.textContent = `Your Customer ID is: ${customerId}`;
+    } else {
+        customerIdDisplay.textContent = 'No Customer ID found.';
+    }
+}
