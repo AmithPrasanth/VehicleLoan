@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Loan Applications</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Admin Dashboard</a>
+            <ul class="nav-menu">
+                <li><a href="adminDashboard.html">Clients</a></li>
+                <li><a href="application.html">Applications</a></li>
+                <li><a href="rejectedList.html">Rejected List</a></li>
+                <li><button id="sign-out-button">Signout</button></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div id="viewApplications" class="content-section">
+            <h2>Vehicle Loan Applications</h2>
+            <table id="applications-table">
+                <thead>
+                    <tr>
+                        <th>Loan ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>View Application</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="application.js"></script>
+</body>
+</html>
