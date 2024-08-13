@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page with Navbar and Signout Confirmation</title>
+    <link rel="stylesheet" href="applyloan.css">
+    <style>
+        .progress-container {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background: #4caf50;
+            border-radius: 4px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">VLC</a>
+            <ul class="nav-menu">
+                <li><a href="clientDashboard.html" id="home">Home</a></li>
+                <li><a href="#aboutus">About us</a></li>
+                <li><a href="emicalculator.html">Emi Calculator</a></li>
+                <li><a href="#applyLoan">Apply Loan</a></li>
+                <li><a href="#" id="signout">Signout</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="signoutSection" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Are you sure you want to sign out?</h2>
+            <div class="modal-buttons">
+                <button id="confirmSignout">Yes</button>
+                <button id="cancelSignout">No</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Check Section -->
+    <section id="checkEligibility">
+        <div class="apply-loan-container">
+            <h2>Check Eligibility</h2>
+            <form id="eligibilityForm">
+                <fieldset>
+                    <legend>Vehicle Details</legend>
+                    <label for="vehicleMake">Vehicle Make:</label>
+                    <select id="vehicleMake" name="vehicleMake" required>
+                        <option value="" disabled selected>Select Vehicle Make</option>
+                        <option value="twoWheeler">Two Wheeler</option>
+                        <option value="fourWheeler">Four Wheeler</option>
+                        <option value="truck">Truck</option>
+                    </select>
+
+                    <label for="vehicleModel">Vehicle Model:</label>
+                    <input type="text" id="vehicleModel" name="vehicleModel" required>
+
+                    <label for="vehiclePrice">Vehicle Showroom Price:</label>
+                    <input type="number" id="vehiclePrice" name="vehiclePrice" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Customer Details</legend>
+                    <label for="employment">Employment Status:</label>
+                    <select id="employment" name="employment" required>
+                        <option value="" disabled selected>Select Employment Status</option>
+                        <option value="government">Government</option>
+                        <option value="private">Private</option>
+                        <option value="it">IT</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="salary">Monthly Salary:</label>
+                    <input type="number" id="salary" name="salary" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="existingEmis">Existing EMIs:</label>
+                    <input type="number" id="existingEmis" name="existingEmis" required>
+                </fieldset>
+
+                <button type="button" id="checkEligibilityButton">Check Eligibility</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="applyLoan" style="display: none;">
+        <div class="apply-loan-container">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+            
+            <h2>Apply for a Loan</h2>
+            <form id="loanApplicationForm">
+                <div class="form-page" id="page1" class="active">
+                    <h3>Customer Details</h3>
+                    <fieldset>
+                        <label for="customerName">Full Name:</label>
+                        <input type="text" id="customerName" name="customerName" required>
+
+                        <label for="customerEmail">Email:</label>
+                        <input type="email" id="customerEmail" name="customerEmail" required>
+
+                        <label for="customerPhone">Phone Number:</label>
+                        <input type="tel" id="customerPhone" name="customerPhone" required>
+
+                        <label for="customerAddress">Address:</label>
+                        <textarea id="customerAddress" name="customerAddress" rows="4" required></textarea>
+                    </fieldset>
+                    <button type="button" class="next-btn" onclick="showPage(2)">Next</button>
+                </div>
+
+                <div class="form-page" id="page2">
+                    <h3>Vehicle Details</h3>
+                    <fieldset>
+                        <label for="vehicleMake">Vehicle Make:</label>
+                        <select id="vehicleMake" name="vehicleMake" required>
+                            <option value="" disabled selected>Select Vehicle Make</option>
+                            <option value="twoWheeler">Two Wheeler</option>
+                            <option value="fourWheeler">Four Wheeler</option>
+                            <option value="truck">Truck</option>
+                        </select>
+
+                        <label for="vehicleModel">Vehicle Model:</label>
+                        <input type="text" id="vehicleModel" name="vehicleModel" required>
+
+                        <label for="vehiclePrice">Vehicle Showroom Price:</label>
+                        <input type="number" id="vehiclePrice" name="vehiclePrice" required>
+                    </fieldset>
+                    <button type="button" class="prev-btn" onclick="showPage(1)">Previous</button>
+                    <button type="button" class="next-btn" onclick="showPage(3)">Next</button>
+                </div>
+
+                <div class="form-page" id="page3">
+                    <h3>Loan Details</h3>
+                    <fieldset>
+                        <label for="loanAmount">Loan Amount:</label>
+                        <input type="number" id="loanAmount" name="loanAmount" required>
+
+                        <label for="loanTerm">Loan Term (in years):</label>
+                        <input type="number" id="loanTerm" name="loanTerm" required>
+
+                        <label for="loanPurpose">Loan Description:</label>
+                        <textarea id="loanPurpose" name="loanPurpose" rows="4" required></textarea>
+                    </fieldset>
+                    <button type="button" class="prev-btn" onclick="showPage(2)">Previous</button>
+                    <button type="button" class="next-btn" onclick="showPage(4)">Next</button>
+                </div>
+
+                <div class="form-page" id="page4">
+                    <h3>Upload Documents</h3>
+                    <fieldset>
+                        <label for="aadharCard">Aadhar Card:</label>
+                        <input type="file" id="aadharCard" name="aadharCard" accept="image/*,application/pdf" required>
+
+                        <label for="panCard">PAN Card:</label>
+                        <input type="file" id="panCard" name="panCard" accept="image/*,application/pdf" required>
+                    </fieldset>
+                    <button type="button" class="prev-btn" onclick="showPage(3)">Previous</button>
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="applyloan.js"></script>
+</body>
+</html>

@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 @Path("/LoanService") // rest/UserService/greet
 public class LoanService { 
  public LoanService(){
-  System.out.println("LoanService() ctor");
+ // System.out.println("LoanService() ctor");
  }
  
    @GET 
@@ -25,6 +25,8 @@ public class LoanService {
    public String welcome(){ 
       return "<h1>Welcome to Loan Service</h1>";
    }  
+
+   
    
    @GET 
    @Path("/customers") 
@@ -76,6 +78,26 @@ public class LoanService {
        LoanDao dao = new LoanDaoImpl();
     List<Loan> loanList = new ArrayList<Loan>();
     loanList = dao.readLoans();
+    return loanList;
+   }
+   
+   @GET 
+   @Path("/rejectedloans") 
+   @Produces(MediaType.APPLICATION_JSON) 
+   public List<Loan> rejectedLoans(){ 
+       LoanDao dao = new LoanDaoImpl();
+    List<Loan> loanList = new ArrayList<Loan>();
+    loanList = dao.readRejectedLoans();
+    return loanList;
+   }
+   
+   @GET 
+   @Path("/pendingloans") 
+   @Produces(MediaType.APPLICATION_JSON) 
+   public List<Loan> pendingLoans(){ 
+       LoanDao dao = new LoanDaoImpl();
+    List<Loan> loanList = new ArrayList<Loan>();
+    loanList = dao.readPendingLoans();
     return loanList;
    }
    
@@ -166,12 +188,12 @@ public class LoanService {
    }
    
    @GET 
-   @Path("/ vehicle/{vehicle_id}") // http://..../resources/DeptService/depts/10
+   @Path("/vehicle/{cust_id}") // http://..../resources/DeptService/depts/10
    @Produces(MediaType.APPLICATION_JSON) 
-   public Vehicle VehicleById(@PathParam("vehicle_id") int vehicle_id){ 
-    System.out.println("Finding loan id "+vehicle_id);
+   public Vehicle VehicleById(@PathParam("cust_id") int cust_id){ 
+    System.out.println("Finding cust id "+cust_id);
     VehicleDao dao = new VehicleDaoImpl();
-    Vehicle veh = dao.readVehicle(vehicle_id);
+    Vehicle veh = dao.readVehicle(cust_id);
     return veh;
    }
    

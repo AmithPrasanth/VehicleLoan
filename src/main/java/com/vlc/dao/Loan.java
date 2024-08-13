@@ -12,6 +12,7 @@ public class Loan {
 	    int total_amount_to_pay ;
 	    int amount_left_to_pay ;
 	    Date date_of_loan;
+	    String status_of_loan;
 	    
 		public int getLoan_id() {
 			return loan_id;
@@ -66,6 +67,12 @@ public class Loan {
 		}
 		public void setTenure(int tenure) {
 			this.tenure = tenure;
+		}
+		public String getStatus_of_loan() {
+			return status_of_loan;
+		}
+		public void setStatus_of_loan(String status_of_loan) {
+			this.status_of_loan = status_of_loan;
 		}
 	    
 	    

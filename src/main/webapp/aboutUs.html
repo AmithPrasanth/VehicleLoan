@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgb(252, 128, 46);
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            color: rgb(252, 128, 46);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 30%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            font-size: 1.5em;
+            color: rgb(252, 128, 46);
+        }
+
+        .card p {
+            padding: 0 20px 20px;
+            font-size: 1em;
+            line-height: 1.6em;
+        }
+
+        .about-info {
+            background-color: #fff;
+            padding: 40px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-info h2 {
+            font-size: 2em;
+            color: rgb(252, 128, 46);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-info p {
+            font-size: 1.1em;
+            line-height: 1.8em;
+            text-align: center;
+        }
+
+        .about-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 1.8em;
+            text-align: center;
+        }
+
+        .about-info ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                max-width: 100%;
+            }
+        }
+    </style>
+    
+    <script src="aboutUs.js"></script>
+    
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">VLC</a>
+            <ul class="nav-menu">
+                <li><a href="#home" id="home">Home</a></li>
+                <li><a href="#aboutus" id="aboutus">About Us</a></li>
+                <li><a href="#emicalc" id="emicalcLink">EMI Calculator</a></li>
+                <li><a href="#applyLoan" id="applyLoanLink">Apply Loan</a></li>
+                <li><button id="sign-out-button">Signout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="header">
+        <h1>About Us</h1>
+    </div>
+
+    <div class="main-content">
+        <div class="cards">
+            <div class="card">
+                <img src="static/boy1.jpeg" alt="Team Member John Doe">
+                <h3>John Doe</h3>
+                <p>John is a dedicated leader with over 10 years of experience in the vehicle loan industry. His expertise and commitment drive our company forward, ensuring that we provide the best solutions for our clients.</p>
+            </div>
+            <div class="card">
+                <img src="static/girl.jpeg" alt="Team Member Jane Smith">
+                <h3>Jane Smith</h3>
+                <p>Jane is our creative head, known for her innovative approach to customer service. She makes sure our loan products are tailored to meet diverse customer needs, ensuring satisfaction and trust.</p>
+            </div>
+            <div class="card">
+                <img src="static/boy2.jpeg" alt="Team Member Mike Johnson">
+                <h3>Mike Johnson</h3>
+                <p>Mike is our technical expert, with deep knowledge of financial technology. He ensures our loan processing systems are efficient, secure, and user-friendly for a seamless customer experience.</p>
+            </div>
+        </div>
+
+        <div class="about-info">
+            <h2>Our Mission</h2>
+            <p>At VLC, we are dedicated to providing exceptional vehicle loan solutions tailored to your needs. Our mission is to simplify the vehicle financing process and offer personalized support to help you acquire the vehicle of your dreams.</p>
+
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li><strong>Competitive Rates:</strong> We offer some of the most competitive interest rates in the industry, ensuring that you get the best deal.</li>
+                <li><strong>Flexible Terms:</strong> Our loan terms are designed to be flexible, accommodating various financial situations and preferences.</li>
+                <li><strong>Quick and Easy Application:</strong> Our streamlined application process is designed to be fast and hassle-free, so you can get approved in no time.</li>
+                <li><strong>Expert Guidance:</strong> Our team of experienced professionals is here to guide you through every step of the loan process, from application to approval.</li>
+                <li><strong>Customer-Centric Approach:</strong> We prioritize your needs and work diligently to provide solutions that best fit your financial situation and goals.</li>
+            </ul>
+
+            <h2>Our Values</h2>
+            <p>Integrity, transparency, and customer satisfaction are at the core of our values. We strive to build long-term relationships with our clients based on trust and reliability.</p>
+        </div>
+    </div>
+
+</body>
+</html>

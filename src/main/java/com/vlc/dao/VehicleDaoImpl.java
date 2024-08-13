@@ -50,12 +50,12 @@ public class VehicleDaoImpl implements VehicleDao {
 	}
 	
 	@Override
-	public Vehicle readVehicle(int vehicle_id) {
+	public Vehicle readVehicle(int cust_id) {
 		Vehicle veh = null;
 
 		try {
 			Statement statement = conn.createStatement();
-			ResultSet result = statement.executeQuery("select * from vehicle where vehicle_id="+vehicle_id);
+			ResultSet result = statement.executeQuery("select * from vehicle where customer_id="+cust_id);
 			if(result.next()) {
 				veh = new Vehicle();
 				veh.setVehicle_id(result.getInt(1));

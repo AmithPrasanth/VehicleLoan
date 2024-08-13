@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public class LoanDaoImpl implements LoanDao {
-
+    
 	Connection conn=null;
 	
 	public LoanDaoImpl() {
@@ -60,7 +60,7 @@ public class LoanDaoImpl implements LoanDao {
 
 		try {
 			Statement statement = conn.createStatement();
-			ResultSet result = statement.executeQuery("select * from Loan where loan_id="+loan_id);
+			ResultSet result = statement.executeQuery("select * from loans where loan_id="+loan_id);
 			if(result.next()) {
 				loan = new Loan();
 				loan.setLoan_id(result.getInt(1));
@@ -87,7 +87,7 @@ public class LoanDaoImpl implements LoanDao {
 		
 		try {
 			Statement statement = conn.createStatement();
-			ResultSet result = statement.executeQuery("select * from loan");
+			ResultSet result = statement.executeQuery("select * from loans");
 			
 			while(result.next()) {
 				loan = new Loan();
@@ -100,6 +100,7 @@ public class LoanDaoImpl implements LoanDao {
 				loan.setTotal_amount_to_pay(result.getInt(7));
 				loan.setAmount_left_to_pay(result.getInt(8));
 				loan.setDate_of_loan(result.getDate(9));
+				loan.setStatus_of_loan(result.getString(10));
 				loanList.add(loan);
 			}
 			
@@ -134,7 +135,7 @@ public class LoanDaoImpl implements LoanDao {
 	@Override
 	public void deleteLoan(int loan_id) {
 		try {
-			PreparedStatement pst = conn.prepareStatement("delete from loan where loan_id=?");
+			PreparedStatement pst = conn.prepareStatement("delete from loans where loan_id=?");
 			
 			pst.setInt(1,loan_id); //WHERE
 			
@@ -143,6 +144,66 @@ public class LoanDaoImpl implements LoanDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<Loan> readRejectedLoans() {
+		Loan loan = null;
+		ArrayList<Loan> loanList = new ArrayList<Loan>();
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet result = statement.executeQuery("select * from loans where status_of_loan='REJECTED'");
+			
+			while(result.next()) {
+				loan = new Loan();
+				loan.setLoan_id(result.getInt(1));
+				loan.setLoan_number(result.getInt(2));
+				loan.setAmount(result.getInt(3));
+				loan.setCustomer_id(result.getInt(4));
+				loan.setRate_of_interest(result.getFloat(5));
+				loan.setTenure(result.getInt(6));
+				loan.setTotal_amount_to_pay(result.getInt(7));
+				loan.setAmount_left_to_pay(result.getInt(8));
+				loan.setDate_of_loan(result.getDate(9));
+				loan.setStatus_of_loan(result.getString(10));
+				loanList.add(loan);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return loanList;
+	}
+
+	@Override
+	public List<Loan> readPendingLoans() {
+		Loan loan = null;
+		ArrayList<Loan> loanList = new ArrayList<Loan>();
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet result = statement.executeQuery("select * from loans where status_of_loan='PENDING'");
+			
+			while(result.next()) {
+				loan = new Loan();
+				loan.setLoan_id(result.getInt(1));
+				loan.setLoan_number(result.getInt(2));
+				loan.setAmount(result.getInt(3));
+				loan.setCustomer_id(result.getInt(4));
+				loan.setRate_of_interest(result.getFloat(5));
+				loan.setTenure(result.getInt(6));
+				loan.setTotal_amount_to_pay(result.getInt(7));
+				loan.setAmount_left_to_pay(result.getInt(8));
+				loan.setDate_of_loan(result.getDate(9));
+				loan.setStatus_of_loan(result.getString(10));
+				loanList.add(loan);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return loanList;
 	}
 	
 	

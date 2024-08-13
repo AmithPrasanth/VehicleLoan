@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .navbar {
+            background-color: rgb(252, 128, 46);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+    
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .nav-menu li {
+            display: inline;
+            margin-left: 20px;
+        }
+    
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    
+        #signout {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-top: 80px;
+            text-align: center; /* Center text inside the calculator */
+        }
+    
+        .calculator h2 {
+            margin-bottom: 20px;
+        }
+    
+        .form-group {
+            margin-bottom: 15px;
+        }
+    
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(252, 128, 46);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        .form-group button:hover {
+            background-color: rgb(255, 168, 110);
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+          <a href="#" class="logo">VLC</a>
+          <ul class="nav-menu">
+            <li><a href="clientDashboard.html" id="home">Home</a></li>
+            <li><a href="aboutUs.html">About us</a></li>
+            <li><a href="#emicalc" id="emicalcLink">Emi Calculator</a></li>
+            <li><a href="applyloan.html" id="applyLoanLink">Apply Loan</a></li>
+            <li><a href="#" id="signout">Signout</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="calculator">
+        <h2>EMI Calculator</h2>
+        <div class="form-group">
+            <label for="amount">Loan Amount:</label>
+            <input type="number" id="amount" placeholder="Enter loan amount">
+        </div>
+        <div class="form-group">
+            <label for="tenure">Tenure (in months):</label>
+            <input type="number" id="tenure" placeholder="Enter tenure in months">
+        </div>
+        <div class="form-group">
+            <label for="interest">Interest Rate (per annum):</label>
+            <input type="number" id="interest" placeholder="Enter interest rate">
+        </div>
+        <div class="form-group">
+            <label for="existingEmis">Existing EMIs (monthly):</label>
+            <input type="number" id="existingEmis" placeholder="Enter existing EMIs">
+        </div>
+        <div class="form-group">
+            <button onclick="calculateEMI()">Calculate EMI</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <script src="emicalculator.js"></script>
+</body>
+</html>

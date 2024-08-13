@@ -34,10 +34,10 @@ Connection conn=null;
 	public void createCredentials(Credentials credObj) {
 		// TODO Auto-generated method stub
 		try {
-			PreparedStatement pst = conn.prepareStatement("insert into credentials values (?,?)");
-			
-			pst.setString(1, credObj.getUsername());
-			pst.setString(2, credObj.getPassword());
+			PreparedStatement pst = conn.prepareStatement("insert into credentials values (?,?,?)");
+			pst.setInt(1, credObj.getCust_id());
+			pst.setString(2, credObj.getUsername());
+			pst.setString(3, credObj.getPassword());
 			
 			int rows = pst.executeUpdate();
 			System.out.println(rows+" Record(s) inserted : ");
@@ -55,10 +55,11 @@ Connection conn=null;
 
 		try {
 			Statement statement = conn.createStatement();
-			ResultSet result = statement.executeQuery("select * from credentials where username="+username);
+			ResultSet result = statement.executeQuery("select password,customer_id from credentials where username="+username);
 			if(result.next()) {
 				cred = new Credentials();
 				cred.setPassword(result.getString(1));
+				cred.setCust_id(result.getInt(2));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -78,8 +79,9 @@ Connection conn=null;
 			
 			while(result.next()) {
 				cred = new Credentials();
-				cred.setUsername(result.getString(1));
-				cred.setPassword(result.getString(2));
+				cred.setCust_id(result.getInt(1));
+				cred.setUsername(result.getString(2));
+				cred.setPassword(result.getString(3));
 				credList.add(cred);
 			}
 			
@@ -92,13 +94,13 @@ Connection conn=null;
 	@Override
 	public void updateCredential(Credentials credObj) {
 		try {
-			PreparedStatement pst = conn.prepareStatement("update customer set password=? where username=?");
+			PreparedStatement pst = conn.prepareStatement("update credentials set password=?,customer_id=? where username=?");
 			
 			pst.setString(2,credObj.getUsername()); //WHERE
 			pst.setString(1, credObj.getPassword()); //set col1
 			
 			int rows = pst.executeUpdate();
-			System.out.println(rows+" Record(s) updated : ");
+			//System.out.println(rows+" Record(s) updated : ");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +115,7 @@ Connection conn=null;
 			pst.setString(1,username); //WHERE
 			
 			int rows = pst.executeUpdate();
-			System.out.println(rows+" Record(s) deleted : ");
+			//System.out.println(rows+" Record(s) deleted : ");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

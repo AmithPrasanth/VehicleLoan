@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Details</title>
+    <link rel="stylesheet" href="applicationDetails.css">
+    <link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="adminDashboard.html" class="logo">Admin Dashboard</a>
+            <ul class="nav-menu">
+                <li><a href="#">Clients</a></li>
+                <li><a href="application.html">Applications</a></li>
+                <li><a href="#">Rejected List</a></li>
+                <li><button id="sign-out-button">Signout</button></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div id="application-details" class="content-section">
+            <h2>Application Details</h2>
+            <div id="customer-details">
+                <h3>Customer Details</h3>
+                <p><strong>Name:</strong> <span id="customer-name"></span></p>
+                <p><strong>Email:</strong> <span id="customer-email"></span></p>
+                <p><strong>Phone:</strong> <span id="customer-phone"></span></p>
+                <p><strong>Address:</strong> <span id="customer-address"></span></p>
+            </div>
+           
+            <div id="documents">
+                <h3>Documents</h3>
+                <p><strong>Aadhar/PAN Card:</strong> <a id="doc-aadhar" href="#" target="_blank">View Document</a></p>
+                <p><strong>Payslip:</strong> <a id="doc-payslip" href="#" target="_blank">View Document</a></p>
+            </div>
+            <div id="action-buttons">
+                <button id="accept-button">Accept</button>
+                <button id="reject-button">Reject</button>
+            </div>
+        </div>
+    </div>
+    <script src="applicationDetails.js"></script>
+</body>
+</html>
